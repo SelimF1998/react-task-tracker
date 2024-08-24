@@ -2,9 +2,9 @@ import React from "react";
 import SearchBar from "../search-bar/SearchBar";
 import Dropdown from "../dropdown/Dropdown";
 import { ReactNode } from "react";
-import MessageIcon from '@mui/icons-material/Message';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import "./Navbar.scss";
@@ -19,22 +19,22 @@ const Navbar = () => {
   const navbarItems: NavbarItem[] = [
     {
       id: 1,
-      icon: <MessageIcon  style={{ fontSize: "25px",  color: "#99a1b3" }} />
+      icon: <StickyNote2OutlinedIcon  style={{ fontSize: "25px",  color: "#99a1b3" }} />
     },
     {
       id: 2,
-      icon: <BookmarkIcon style={{ fontSize: "25px",  color: "#99a1b3" }} />
+      icon: <BookmarkBorderOutlinedIcon style={{ fontSize: "25px",  color: "#99a1b3" }} />
     
     },
     {
       id: 3,
-      icon: <NotificationsIcon style={{ fontSize: "25px",  color: "#99a1b3" }} />
+      icon: <NotificationsNoneOutlinedIcon style={{ fontSize: "25px",  color: "#99a1b3" }} />
     }
   ];
 
     const dropdownItem = {
     id: 1,
-    icon: <MessageIcon style={{ fontSize: "18px", color: "#99a1b3" }} />,
+    icon: <StickyNote2OutlinedIcon style={{ fontSize: "18px", color: "#99a1b3" }} />,
     name: "Navbar",
     items: [
       {
