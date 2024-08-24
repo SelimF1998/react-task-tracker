@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState, useEffect } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
@@ -6,17 +6,33 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';;
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 
 import "./Sidebar.scss";
-
 interface SidebarItem {
   label: string;
   icon: React.ReactNode; // React component for the icon
 }
 
 const Sidebar = () => {
+    const COLLAPSE_THRESHOLD = 1100
     const [sidebarCollapse, setSidebarCollapse] = useState<boolean>(false);
+
+    useEffect(() => {
+      const handleResize = () => {
+        if (window.innerWidth < COLLAPSE_THRESHOLD) {
+          setSidebarCollapse(true);
+        } else {
+          setSidebarCollapse(false);
+        }
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
     console.log("Sidebar Collapse:", sidebarCollapse);
 
@@ -64,6 +80,7 @@ const Sidebar = () => {
         {sidebarItems.map((item, index) => (
           <div  key={index} className="sidebar__content__element" style={{
             // width: sidebarCollapse ? '53%' : '', 
+            justifyContent: sidebarCollapse ? 'center' : ''
           }} >
             <div className="sidebar__content__element__icon">{item.icon}</div>
             {!sidebarCollapse && <div className="sidebar__content__element__label">{item.label}</div>}

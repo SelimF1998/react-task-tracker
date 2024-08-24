@@ -55,9 +55,16 @@
         &__element {
             padding: 15px;
             display: flex;
+            align-items: center;
+            //justify-content: center;
             gap: 15px;
             cursor: pointer;
 
+            // &__icon {
+            //     display: flex;
+            //     align-items: center;
+            //     justify-content: center;
+            // }
 
             &__label {
                 display: flex;
