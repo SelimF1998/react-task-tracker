@@ -12,6 +12,7 @@ import "./Sidebar.scss";
 interface SidebarItem {
   label: string;
   icon: React.ReactNode; // React component for the icon
+  
 }
 
 const Sidebar = () => {
