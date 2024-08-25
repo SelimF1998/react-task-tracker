@@ -5,7 +5,7 @@ import './SearchBar.scss'
 const SearchBar = () => {
   return (
     <div className='search-bar' >
-        <div className='search-bar__icon' ><SearchIcon  style={{ fontSize: "20px", color: "#99a1b3" }} /></div>
+        <div className='search-bar__icon' ><SearchIcon  style={{ fontSize: "20px", color: "#C0C1C6" }} /></div>
         <input className='search-bar__search-input' type='text' placeholder='Search' /> 
     </div>
   )

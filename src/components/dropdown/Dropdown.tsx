@@ -66,9 +66,9 @@ const Dropdown: React.FC<DropdownProps> = ({ dropdownItem }) => {
         <div className="dropdown__title__arrow-icon">
           
           { !dropdownClicked ? ( <KeyboardArrowDownOutlinedIcon
-            style={{ fontSize: "18px", color: "#99a1b3" }}
+            style={{ fontSize: "18px", color: "#95A1B0" }}
           /> ) : ( <KeyboardArrowUpOutlinedIcon
-            style={{ fontSize: "18px", color: "#99a1b3" }}
+            style={{ fontSize: "18px", color: "#95A1B0" }}
           /> ) }
         </div>
       </div>

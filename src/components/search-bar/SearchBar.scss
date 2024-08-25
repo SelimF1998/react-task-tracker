@@ -5,7 +5,7 @@
   gap: 10px;
   background: #ffffff;
 
-  border: 1px solid #99a1b3;
+  border: 1px solid #cdcbd5;
   border-radius: 5px;
 
   &__icon {
@@ -23,13 +23,13 @@
 
     &::placeholder {
       display: flex;
-      
-      color: #99a1b3;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 13px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 20px;
+        align-items: center;
+        color: #C0C1C6;
+        font-family: "Roboto", Arial, Helvetica, sans-serif; 
+        font-size: 13px; 
+        font-weight:600; 
+        line-height: 1.5; 
+        letter-spacing: 0.5px;
     }
   }
 }

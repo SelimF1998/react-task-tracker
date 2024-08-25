@@ -1,0 +1,50 @@
+.avatar {
+    
+    &__username {
+        display: flex;
+    width: 23px;
+    height: 15px;
+    padding: 6px 4px 6px 4px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border: 1.5px solid #bbbaba;
+    background: #eff2f5;
+
+    &__initials {
+        display: flex;
+        align-items: center;
+        color: #9f9fb7;
+        font-family: "Roboto", Arial, Helvetica, sans-serif; 
+        font-size: 13px; 
+        font-weight:600; 
+        line-height: 1.5; 
+        letter-spacing: 0.5px;
+    }
+
+    }
+
+    &__image {
+     display: flex;
+     width: 31px;
+    height: 27px;
+    border-radius: 50%;
+     justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border: 1.5px solid #bbbaba;
+    background: #eff2f5;
+
+    &__img {
+        width: 31px;
+    height: 27px;
+    border-radius: 50%;
+
+    }
+
+    }
+
+   
+}

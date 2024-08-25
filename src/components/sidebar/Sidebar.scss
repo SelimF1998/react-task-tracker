@@ -1,88 +1,88 @@
 .sidebar {
-    background: #FFFFFF;
-    transition: width 0.5s ease, opacity 0.5s ease;
-    //overflow: hidden;
+  background: #FBFCFF;
+  transition: width 0.5s ease, opacity 0.5s ease;
+  //overflow: hidden;
 
-    &__header {
-        padding: 30px 20px 30px 20px;
+  &__header {
+    padding: 30px 20px 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid #eff1f2;
+    border-radius: 5px;
+
+    &__left {
+      display: flex;
+      gap: 14px;
+
+      &__app-name {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-
-        border: 1px solid #EFF1F2;
-        border-radius: 5px;
-
-        &__left {
-            display: flex;
-            gap: 14px;
-
-            &__app-name {
-                display: flex;
-                align-items: center;
-                color: #272727;
-                font-family:Arial, Helvetica, sans-serif;
-                font-size: 30px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 20px;
-            }
-        }
-
-        &__right {
-            padding: 4px;
-            display: flex;
-            border-radius: 5px;
-            cursor: pointer;
-
-            &:hover {
-                background: #748EE9;
-            }   
-        }
+        color: #4a4a4a; /* Dark gray with a subtle touch */
+        font-family: "Roboto", Arial, Helvetica, sans-serif; /* Adding 'Roboto' for a modern look */
+        font-size: 30px; /* Slightly smaller font size for a cleaner appearance */
+        font-weight:600; /* Normal weight for a softer look */
+        line-height: 1.5; /* Increased line height for better readability */
+        letter-spacing: 0.5px;
+      }
     }
 
-    &__bar {
-        height: 2px;
-        background: #EFF1F2;
-    }
+    &__right {
+      padding: 4px;
+      display: flex;
+      border-radius: 5px;
+      cursor: pointer;
 
-    &__content {
-        padding: 60px 20px 60px 20px;
+      &:hover {
+        background: #E0E0E0;
+      }
+    }
+  }
+
+  &__bar {
+    height: 2px;
+    background: #eff1f2;
+  }
+
+  &__content {
+    padding: 60px 20px 60px 20px;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+
+    &__element {
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      //justify-content: center;
+      gap: 15px;
+      cursor: pointer;
+
+       &__icon {
+           display: flex;
+           color: #A2A9C0;
+          align-items: center;
+           
+       }
+
+      &__label {
         display: flex;
-        flex-direction: column;
-        height: max-content;
-        
-        
-        &__element {
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            //justify-content: center;
-            gap: 15px;
-            cursor: pointer;
+        align-items: center;
+        color: #A2A9C0;
+        font-family: "Roboto", Arial, Helvetica, sans-serif; 
+        font-size: 16px; 
+        font-weight:600; 
+        line-height: 1.5; 
+        letter-spacing: 0.5px;
+      }
 
-            // &__icon {
-            //     display: flex;
-            //     align-items: center;
-            //     justify-content: center;
-            // }
-
-            &__label {
-                display: flex;
-                align-items: center;
-                color: #CECEE9;
-                font-family:Arial, Helvetica, sans-serif;
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 20px;
-            }
-
-            &:hover {
-                background: #748EE9;
-                border-radius: 10px;
-              }
-            
-        }
-        //justify-content: center;
+      &:hover {
+        background: #E2E6EB;
+        border-radius: 5px;
+      }
     }
+    //justify-content: center;
+  }
 }
