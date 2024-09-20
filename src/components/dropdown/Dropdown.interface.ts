@@ -1,5 +1,9 @@
 import { ReactNode } from 'react';
 
+export interface DropdownProps {
+    dropdownItem: DropdownItem;
+  }
+
 export interface DropdownItem {
   id: number;
   icon?: ReactNode; 
@@ -10,4 +14,5 @@ export interface DropdownItem {
 export interface SubItem {
   icon?: ReactNode; 
   name?: string;
+  onClick: () => void;
 }

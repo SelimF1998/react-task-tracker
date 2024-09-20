@@ -10,7 +10,7 @@
     gap: 8px;
     padding: 6px;
     border: 1px solid #cdcbd5;
-    border-radius: 5px;
+    border-radius: 7px;
     background: #ffffff;
     cursor: pointer;
 
@@ -22,7 +22,7 @@
     &__label {
         display: flex;
         align-items: center;
-        color: #95A1B0;
+        //color: #95A1B0;
         font-family: "Roboto", Arial, Helvetica, sans-serif; 
         font-size: 13px; 
         font-weight:600; 
@@ -63,7 +63,7 @@
       &__label {
         display: flex;
         align-items: center;
-        color: #95A1B0;
+        //color: #95A1B0;
         font-family: "Roboto", Arial, Helvetica, sans-serif; 
         font-size: 13px; 
         font-weight:700; 

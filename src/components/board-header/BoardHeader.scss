@@ -1,0 +1,61 @@
+.board-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    color: #4a4a4a;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__right {
+      display: flex;
+      gap: 5px;
+
+      &__favs {
+        display: flex;
+        align-items: center;
+        border: 1px solid #cdcbd5;
+        border-radius: 7px;
+        background: #ffffff;
+        height: 32px;
+        width: 32px;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      &__add-task-button {
+        display: flex;
+
+        border: 1px solid #cdcbd5;
+        border-radius: 7px;
+        background: #2667e7;
+        padding-right: 10px;
+        padding-left: 10px;
+        cursor: pointer;
+
+        .add-task-label {
+          display: flex;
+          align-items: center;
+          color: white;
+          font-family: "Roboto", Arial, Helvetica, sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1.5;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+  }
+}

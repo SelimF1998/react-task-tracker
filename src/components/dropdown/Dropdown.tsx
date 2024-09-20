@@ -66,9 +66,9 @@ const Dropdown: React.FC<DropdownProps> = ({ dropdownItem }) => {
         <div className="dropdown__title__arrow-icon">
           
           { !dropdownClicked ? ( <KeyboardArrowDownOutlinedIcon
-            style={{ fontSize: "18px", color: "#95A1B0" }}
+            style={{ fontSize: "18px" }}
           /> ) : ( <KeyboardArrowUpOutlinedIcon
-            style={{ fontSize: "18px", color: "#95A1B0" }}
+            style={{ fontSize: "18px" }}
           /> ) }
         </div>
       </div>
@@ -76,7 +76,7 @@ const Dropdown: React.FC<DropdownProps> = ({ dropdownItem }) => {
       {dropdownClicked && (
         <div id="dropdown-list" className="dropdown__list">
           {dropdownItem.items?.map((items, index) => (
-            <div key={index} className="dropdown__list__element">
+            <div key={index} className="dropdown__list__element" onClick={items.onClick}>
             <div className="dropdown__list__element__icon">
               {items.icon}
             </div>

@@ -21,7 +21,7 @@ const Navbar = () => {
       id: 1,
       icon: (
         <StickyNote2OutlinedIcon
-          style={{ fontSize: "25px", color: "#95A1B0" }}
+          style={{ fontSize: "25px" }}
         />
       ),
     },
@@ -29,7 +29,7 @@ const Navbar = () => {
       id: 2,
       icon: (
         <BookmarkBorderOutlinedIcon
-          style={{ fontSize: "25px", color: "#95A1B0" }}
+          style={{ fontSize: "25px" }}
         />
       ),
     },
@@ -37,7 +37,7 @@ const Navbar = () => {
       id: 3,
       icon: (
         <NotificationsNoneOutlinedIcon
-          style={{ fontSize: "25px", color: "#95A1B0" }}
+          style={{ fontSize: "25px" }}
         />
       ),
     },
@@ -51,26 +51,36 @@ const Navbar = () => {
       "https://cdn.sortiraparis.com/images/80/104172/981129-le-musee-de-la-marine-a-paris-et-ses-collections-permanentes-tour-eiffel-trocadero.jpg",
   };
 
+  const handleEdit = () => {
+    console.log("Edit Clicked!")
+  }
+
+  const handleDelete = () => {
+    console.log("Delete Clicked!")
+  }
+
   const dropdownItem = {
     id: 1,
     icon: <Avatar user={user} />,
-    name: "Yessine Karoui",
+    name: "Selim Ferroukhi",
     items: [
       {
         icon: (
           <ModeEditOutlineOutlinedIcon
-            style={{ fontSize: "18px", color: "#95A1B0" }}
+            style={{ fontSize: "18px" }}
           />
         ), // Coffee icon
         name: "Edit",
+        onClick: handleEdit
       },
       {
         icon: (
           <DeleteOutlineOutlinedIcon
-            style={{ fontSize: "18px", color: "#95A1B0" }}
+            style={{ fontSize: "18px" }}
           />
         ),
         name: "Delete",
+        onClick: handleDelete
       },
     ],
   };

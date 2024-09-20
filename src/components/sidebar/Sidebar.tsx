@@ -121,7 +121,7 @@ const Sidebar = () => {
             <TaskAltIcon style={{ fontSize: "40px", color: "#748EE9" }} />
           </div>
           {!sidebarCollapse && (
-            <div className="sidebar__header__left__app-name">Sxide</div>
+            <div className="sidebar__header__left__app-name">Carti</div>
           )}
         </div>
         <div className="sidebar__header__right" onClick={toggleSidebarCollapse}>
@@ -147,16 +147,16 @@ const Sidebar = () => {
             style={{
               // width: sidebarCollapse ? '53%' : '',
               justifyContent: sidebarCollapse ? "center" : "",
-              background: item.label === selectedSiderbarItem ? '#667295' : ''
+              background: item.label === selectedSiderbarItem ? '#3f3b3b' : ''
             }}
             onClick={() => handleItemClick(item.path, item.label)}
           >
             <div className="sidebar__content__element__icon" style={{
-                color: item.label === selectedSiderbarItem ? '#f6f8ff' : ''
+                color: item.label === selectedSiderbarItem ? 'white' : ''
               }} >{item.icon}</div>
             {!sidebarCollapse && (
               <div className="sidebar__content__element__label" style={{
-                color: item.label === selectedSiderbarItem ? '#f6f8ff' : ''
+                color: item.label === selectedSiderbarItem ? 'white' : ''
               }}>
                 {item.label}
               </div>
