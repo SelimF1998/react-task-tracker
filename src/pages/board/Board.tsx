@@ -11,7 +11,7 @@ const Board = () => {
   return (
     <div className='board' >
       <BoardHeader />
-      <TaskCard />
+      {/* <TaskCard /> */}
       <div className='board__tasks-container' >
         <div className='board__tasks-container__body' >
           <TasksContainer label="Todo" color="#FDF8EA" />

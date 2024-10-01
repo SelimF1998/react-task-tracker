@@ -147,7 +147,7 @@ const Sidebar = () => {
             style={{
               // width: sidebarCollapse ? '53%' : '',
               justifyContent: sidebarCollapse ? "center" : "",
-              background: item.label === selectedSiderbarItem ? '#3f3b3b' : ''
+              background: item.label === selectedSiderbarItem ? '#2667e7' : ''
             }}
             onClick={() => handleItemClick(item.path, item.label)}
           >

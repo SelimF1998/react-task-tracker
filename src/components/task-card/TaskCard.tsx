@@ -59,8 +59,8 @@ export const TaskCard = () => {
 
         <div className='task-card__footer' >
             <div className='task-card__footer__left' >
-                {users.map((user) => (
-                    <div  className='task-card__footer__left__avatar' ><Avatar user={user} /></div>
+                {users.map((user, index) => (
+                    <div key={index}  className='task-card__footer__left__avatar' ><Avatar user={user} /></div>
                 ))}
                
 
