@@ -63,8 +63,7 @@ const Dropdown: React.FC<DropdownProps> = ({ dropdownItem }) => {
       <div id="dropdown-title" className="dropdown__title" onClick={handleDropdownClick}>
         <div className="dropdown__title__icon">{dropdownItem.icon}</div>
         <div className="dropdown__title__label">{dropdownItem.name}</div>
-        <div className="dropdown__title__arrow-icon">
-          
+        <div className="dropdown__title__arrow-icon"> 
           { !dropdownClicked ? ( <KeyboardArrowDownOutlinedIcon
             style={{ fontSize: "18px" }}
           /> ) : ( <KeyboardArrowUpOutlinedIcon

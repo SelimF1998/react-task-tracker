@@ -1,16 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { BoardHeader } from '../../components/board-header/BoardHeader';
 import TasksContainer from '../../components/tasks-container/TasksContainer';
 import { TaskCard } from '../../components/task-card/TaskCard';
-
-
+import AddTaskFormDialog from '../../components/tasks-forms/AddTaskFormDialog';
 import './Board.scss'
 
 
 const Board = () => {
+  const [isAddTaskDialogOpen, setIsAddTaskDialogOpen] = useState(false);
+
+  const openDialog = () => setIsAddTaskDialogOpen(true)
+  const closeDialog = () => setIsAddTaskDialogOpen(false);
+
+  const handleTaskSubmit = (taskData: any) => {
+    console.log("New Task:", taskData);
+    
+    setIsAddTaskDialogOpen(false);
+  };
+
   return (
     <div className='board' >
-      <BoardHeader />
+      <BoardHeader onAddClick={openDialog} />
+
+      <AddTaskFormDialog isOpen={isAddTaskDialogOpen} onClose={closeDialog} onSubmit={handleTaskSubmit} />
       {/* <TaskCard /> */}
       <div className='board__tasks-container' >
         <div className='board__tasks-container__body' >

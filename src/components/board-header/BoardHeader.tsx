@@ -3,9 +3,13 @@ import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import Dropdown from '../dropdown/Dropdown';
-import './BoardHeader.scss'
+import './BoardHeader.scss';
 
-export const BoardHeader = () => {
+interface BoardHeaderProps {
+  onAddClick: () => void;
+}
+
+export const BoardHeader: React.FC<BoardHeaderProps> = ({onAddClick}) => {
 
     const [favsClicked, setFavsClicked] = useState(false);
 
@@ -52,7 +56,7 @@ export const BoardHeader = () => {
                     <Dropdown dropdownItem={dropdownItem} />
                 </div> 
 
-                <div className="board-header__content__right__add-task-button" >
+                <div className="board-header__content__right__add-task-button" onClick={onAddClick} >
                     <span className='add-task-label' >Add Task</span>
                 </div>
             </div>
