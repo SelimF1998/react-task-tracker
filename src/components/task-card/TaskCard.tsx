@@ -6,76 +6,73 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import './TaskCard.scss';
 import { DvrOutlined } from '@mui/icons-material';
 
-export const TaskCard = () => {
-    const users = [
-        {
+export interface TaskProps {
+    taskObject: Task;
+ }
+
+export interface Task {
+  id: number;
+  tag: string;
+  priority: 'Low' | 'Medium' | 'High';
+  status: 'Todo' | 'In Progress' | 'On Approval' | 'Done';
+  taskName: string;
+  description: string;
+  assignee: User;
+  attachements: number;
+  messages: number;        
+}
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  profileImg: string;
+}
+
+const TaskCard: React.FC<TaskProps> = ({taskObject}) => {
+    const user = {
           id: 1,
           name: "Selim Ferroukhi",
           email: "selim.ferroukhi7@gmail.com",
           profileImg:
-            "https://cdn.sortiraparis.com/images/80/104172/981129-le-musee-de-la-marine-a-paris-et-ses-collections-permanentes-tour-eiffel-trocadero.jpg",
-        },
-        {
-          id: 2,
-          name: "Emily Johnson",
-          email: "emily.johnson@example.com",
-          profileImg:
             "",
-        },
-        {
-          id: 3,
-          name: "John Doe",
-          email: "john.doe@example.com",
-          profileImg:
-            "",
-        },
-        {
-          id: 4,
-          name: "Maria Garcia",
-          email: "maria.garcia@example.com",
-          profileImg:
-            "",
-        },
-      ];
-
+    }
+    
   return (
     <div className="task-card" >
         <div className='task-card__header' >
             <div className='task-card__header__field' >
                 <div className='task-card__header__field__icon' ><SpaceDashboardOutlinedIcon style={{ fontSize: "16px", color: "#4D38B2" }} /></div>
-                <div className='task-card__header__field__label' >Dashboard</div>
+                <div className='task-card__header__field__label' > {taskObject.tag} </div>
             </div>
             <div className='task-card__header__status' >
                 <div className='task-card__header__status__icon' ></div>
-                <div className='task-card__header__status__label' >Medium</div>  
+                <div className='task-card__header__status__label' > {taskObject.priority} </div>  
             </div>
         </div>
 
-        <div className='task-card__title' >Employee Details</div>
+        <div className='task-card__title' > {taskObject.taskName} </div>
 
-        <div className='task-card__description' >Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+        <div className='task-card__description' > {taskObject.description}</div>
 
         <div className='task-card__bar' ></div>
 
         <div className='task-card__footer' >
             <div className='task-card__footer__left' >
-                {users.map((user, index) => (
-                    <div key={index}  className='task-card__footer__left__avatar' ><Avatar user={user} /></div>
-                ))}
-               
-
+                <div className='task-card__footer__left__avatar' ><Avatar user={taskObject.assignee} /></div>
             </div>
             <div className='task-card__footer__right' >
                 <div className='task-card__footer__right__attachements' >
                     <div className='task-card__footer__right__attachements__icon' >< AttachFileOutlinedIcon style={{ fontSize: "16px", color: "#9090A1" }} /></div>
-                    <div className='task-card__footer__right__attachements__value' >3</div>
+                    <div className='task-card__footer__right__attachements__value' >{taskObject.attachements}</div>
                 </div>
                 <div className='task-card__footer__right__messages' >
                     <div className='task-card__footer__right__messages__icon' ><ChatBubbleOutlineOutlinedIcon style={{ fontSize: "16px", color: "#9090A1" }} /> </div>
-                    <div className='task-card__footer__right__messages__value' >2</div>
+                    <div className='task-card__footer__right__messages__value' >{taskObject.messages}</div>
                 </div>
             </div>
         </div>
     </div>
   )
 }
+
+export default TaskCard;

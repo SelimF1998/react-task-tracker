@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface DropdownProps {
     dropdownItem: DropdownItem;
-  }
+ }
 
 export interface DropdownItem {
   id: number;
