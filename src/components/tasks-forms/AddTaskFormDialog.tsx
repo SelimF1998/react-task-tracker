@@ -1,31 +1,35 @@
-import react, {useState} from 'react'
+import react, {useState, useEffect} from 'react'
 import Modal from '../modal/Modal';
 import Input from '../input/Input';
 import InputDropdown from '../input-dropdown/InputDropdown';
 import Textarea from '../textarea/Textarea';
 import { User } from '../avatar/Avatar.interface';
+import { Task } from '../task-card/TaskCard';
 import Avatar from '../avatar/Avatar';
+
 import './AddTaskFormDialog.scss';
 
 export type Tag = 'Frontend' | 'Backend' | 'Bug' | 'Task' | 'UI' | 'Enhancement' | 'Research' | '';
 export interface TaskFormData {
-  title: string;
-  description: string;
-  assignee: User;
-  priority: 'Low' | 'Medium' | 'High';
-  status: 'Todo' | 'In Progress' | 'On Approval' | 'Done';
-  tag: Tag;
-  attachements: number;
-  messages: number;
+  title?: string;
+  description?: string;
+  assignee?: User;
+  priority?: 'Low' | 'Medium' | 'High';
+  status?: 'Todo' | 'In Progress' | 'On Approval' | 'Done';
+  tag?: Tag;
+  attachements?: number;
+  messages?: number;
 }
 
 interface TaskFormDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (task: TaskFormData) => void;
+  editClicked?: boolean;
+  editingTask?: Task;
 }
 
-const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onSubmit }) => {
+const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onSubmit, editingTask, editClicked }) => {
   const [taskForm, setTaskForm] = useState<TaskFormData>({
     title: '',
     description: '',
@@ -40,6 +44,28 @@ const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onS
     attachements: 2,
     messages: 3
   });
+  
+  useEffect(() => {
+    console.log("Editing Task:", editingTask);
+    console.log("Edit clicked:", editClicked);
+
+    if (editClicked) {
+      setTaskForm({
+        title: editingTask?.taskName,
+        description: editingTask?.description,
+        assignee: {
+           id: editingTask?.assignee?.id,
+           name: editingTask?.assignee?.name,
+           email: editingTask?.assignee?.email
+        },
+        priority: editingTask?.priority,
+        status: editingTask?.status,
+        tag: editingTask?.tag,
+        attachements: 2,
+        messages: 3
+      })
+    }
+}, [isOpen]);
 
   const users = [
   {
@@ -127,7 +153,7 @@ const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onS
 
    const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!taskForm.title.trim()) return;
+    if (!taskForm.title?.trim()) return;
     console.log("Task Form:", taskForm);
     onSubmit(taskForm);
     setTaskForm({ title: '', description: '', assignee: {id: 0, name: '', email: ''}, priority: 'Medium', status: 'Todo', tag: '', attachements: 2, messages: 3 });
@@ -196,27 +222,39 @@ const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onS
         ],
   };
 
-  const statusItems = {
-        id: 1,
-        items: [
-          {
-            name: "Todo",
-            onClick: () => handleStatus("Todo")
-          },
-          {
-            name: "In Progress",
-            onClick: () => handleStatus("In Progress")
-          },
-          {
-            name: "On Approval",
-            onClick: () => handleStatus("On Approval")
-          },
-          {
-            name: "Done",
-            onClick: () => handleStatus("Done")
-          },
-        ],
-  };
+  // 1. Define limited status items for new tasks
+const limitedStatusItems = {
+  id: 1,
+  items: [
+    {
+      name: "Todo",
+      onClick: () => handleStatus("Todo")
+    }
+  ],
+};
+
+// 2. Full status items for editing existing tasks
+const fullStatusItems = {
+  id: 1,
+  items: [
+    {
+      name: "Todo",
+      onClick: () => handleStatus("Todo")
+    },
+    {
+      name: "In Progress",
+      onClick: () => handleStatus("In Progress")
+    },
+    {
+      name: "On Approval",
+      onClick: () => handleStatus("On Approval")
+    },
+    {
+      name: "Done",
+      onClick: () => handleStatus("Done")
+    },
+  ],
+};
 
   const handleTag = (tag: Tag) => {
   // do something with selected tag, e.g. set state
@@ -253,7 +291,8 @@ const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onS
   }
 
   return (
-    <Modal modalTitle="Create new task" isOpen={isOpen} onClose={onClose} submitButtonLabel="Create Task" onSubmitAction={handleSubmit} onCancelAction={onClose} >
+    <Modal modalTitle={editClicked ? "Edit task" : "Create new task"} isOpen={isOpen} onClose={onClose} submitButtonLabel={editClicked ? "Save Task" : "Create Task"}
+    onSubmitAction={handleSubmit} onCancelAction={onClose} >
       <form >
         <div className="form-control" >
           <div className="form-control__fields" >
@@ -269,14 +308,14 @@ const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onS
                   type="text" />
               </div>
             </div>
-<div className="form-control__field" >
+            <div className="form-control__field" >
               <div className="form-control__field__label" >Assignee</div>
               <div className="form-control__field__input" >
                 <InputDropdown
                   id="assignee"
                   name="assignee"
                   placeholder="Enter assignee"
-                  value={taskForm.assignee.name}
+                  value={taskForm.assignee?.name}
                   onChange={handleChange}
                   type="text"
                   dropdownItem={usersItems}
@@ -312,7 +351,7 @@ const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onS
                   value={taskForm.status}
                   onChange={handleChange}
                   type="text"
-                  dropdownItem={statusItems}
+                  dropdownItem={editClicked ? fullStatusItems : limitedStatusItems}
                    />
               </div>
             </div>

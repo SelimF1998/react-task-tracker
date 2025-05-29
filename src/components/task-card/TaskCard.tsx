@@ -1,45 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined';
 import Avatar from '../avatar/Avatar';
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import OptionsTooltip from '../options-tooltip/OptionsTooltip';
 import './TaskCard.scss';
 import { DvrOutlined } from '@mui/icons-material';
+import { Tag } from '../tasks-forms/AddTaskFormDialog';
 
 export interface TaskProps {
     taskObject: Task;
+    onEdit?: () => void;
+    onDelete?: () => void;
  }
 
 export interface Task {
-  id: number;
-  tag: string;
-  priority: 'Low' | 'Medium' | 'High';
-  status: 'Todo' | 'In Progress' | 'On Approval' | 'Done';
-  taskName: string;
-  description: string;
-  assignee: User;
-  attachements: number;
-  messages: number;        
+  id?: number;
+  tag?: Tag;
+  priority?: 'Low' | 'Medium' | 'High';
+  status?: 'Todo' | 'In Progress' | 'On Approval' | 'Done';
+  taskName?: string;
+  description?: string;
+  assignee?: User;
+  attachements?: number;
+  messages?: number;        
 }
 export interface User {
-  id: number;
-  name: string;
-  email: string;
-  profileImg: string;
+  id?: number;
+  name?: string;
+  email?: string;
+  profileImg?: string;
 }
 
-const TaskCard: React.FC<TaskProps> = ({taskObject}) => {
-    const user = {
-          id: 1,
-          name: "Selim Ferroukhi",
-          email: "selim.ferroukhi7@gmail.com",
-          profileImg:
-            "",
-    }
+const TaskCard: React.FC<TaskProps> = ({taskObject, onEdit, onDelete}) => {
+    const [optionsClicked, setOptionsClicked] = useState<boolean>(false);
+
+    const items = [
+      {
+        icon: (
+          <ModeEditOutlineOutlinedIcon
+            style={{ fontSize: "18px" }}
+          />
+        ), // Coffee icon
+        name: "Edit",
+        onClick: onEdit
+      },
+      {
+        icon: (
+          <DeleteOutlineOutlinedIcon
+            style={{ fontSize: "18px" }}
+          />
+        ),
+        name: "Delete",
+        onClick: onDelete
+      },
+    ]
+
+
+  const handleOptions = () => {
+    setOptionsClicked(!optionsClicked); 
+  }  
     
   return (
     <div className="task-card" >
         <div className='task-card__header' >
+        <div className='task-card__header__left' >
             <div className='task-card__header__field' >
                 <div className='task-card__header__field__icon' ><SpaceDashboardOutlinedIcon style={{ fontSize: "16px", color: "#4D38B2" }} /></div>
                 <div className='task-card__header__field__label' > {taskObject.tag} </div>
@@ -48,6 +76,13 @@ const TaskCard: React.FC<TaskProps> = ({taskObject}) => {
                 <div className='task-card__header__status__icon' ></div>
                 <div className='task-card__header__status__label' > {taskObject.priority} </div>  
             </div>
+        </div>
+        <div onClick={handleOptions} className='task-card__header__right' >
+            <MoreVertIcon />
+            {optionsClicked && (
+            <OptionsTooltip tooltipItem={{ items }} />
+            )}
+            </div>    
         </div>
 
         <div className='task-card__title' > {taskObject.taskName} </div>

@@ -20,17 +20,19 @@ const Avatar: React.FC<UserProps> = ({ user }) =>  {
     }
 
     useEffect(() => {
-        setUserInitials(getInitials(user.name)) 
+        if (user?.name) {
+            setUserInitials(getInitials(user.name)) 
+        }
     }, [])
 
   return (
     <div className="avatar" >
-        {user.profileImg === '' && ( <div className="avatar__username" >
+        {user?.profileImg === '' && ( <div className="avatar__username" >
             <div className="avatar__username__initials" >{userInitials}</div>
         </div> )}
 
-        {user.profileImg !== '' && ( <div className="avatar__image" >
-            <img className="avatar__image__img" src={user.profileImg} />
+        {user?.profileImg !== '' && ( <div className="avatar__image" >
+            <img className="avatar__image__img" src={user?.profileImg} />
         </div> ) }
 
         {/* {user.profileImg === '' ? ( <div className="avatar__initials">{userInitials}</div> ) : (

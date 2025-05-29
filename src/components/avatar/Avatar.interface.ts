@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
 export interface UserProps {
-    user: User;
+    user?: User;
   }
 
 export interface User {
-  id: number;
-  name: string; 
-  email: string;
+  id?: number;
+  name?: string; 
+  email?: string;
   profileImg?: string;
 }
