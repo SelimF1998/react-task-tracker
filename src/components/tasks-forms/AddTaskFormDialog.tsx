@@ -44,6 +44,10 @@ const AddTaskFormDialog: React.FC<TaskFormDialogProps> = ({ isOpen, onClose, onS
     attachements: 2,
     messages: 3
   });
+
+  useEffect(() => {
+    console.log("3asba");
+  }, [])
   
   useEffect(() => {
     console.log("Editing Task:", editingTask);
