@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import Dropdown from '../dropdown/Dropdown';
+import { useUIStore } from '../../store/uiStore';
 import './BoardHeader.scss';
 
-interface BoardHeaderProps {
-  onAddClick: () => void;
-}
 
-export const BoardHeader: React.FC<BoardHeaderProps> = ({onAddClick}) => {
-
+export const BoardHeader = ({}) => {
     const [favsClicked, setFavsClicked] = useState(false);
+    const openDialog = useUIStore((state) => state.openDialog);
 
     const favsHandleClick = () => {
         setFavsClicked(!favsClicked);
@@ -56,7 +54,7 @@ export const BoardHeader: React.FC<BoardHeaderProps> = ({onAddClick}) => {
                     <Dropdown dropdownItem={dropdownItem} />
                 </div> 
 
-                <div className="board-header__content__right__add-task-button" onClick={onAddClick} >
+                <div className="board-header__content__right__add-task-button" onClick={openDialog} >
                     <span className='add-task-label' >Add Task</span>
                 </div>
             </div>

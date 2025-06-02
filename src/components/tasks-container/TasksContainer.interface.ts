@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Task } from '../task-card/TaskCard';
+import { Task } from '../../models/task';
 
 export interface TasksContainerProps {
     label: string;

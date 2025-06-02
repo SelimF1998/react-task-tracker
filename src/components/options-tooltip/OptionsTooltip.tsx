@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { OptionsTooltipProps } from "./OptionsTooltip.interface";
 import "./OptionsTooltip.scss";
 
